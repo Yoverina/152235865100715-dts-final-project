@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Homepage from './pages/Homepage';
+import NavBar from './components/NavBar';
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from './auth/firebase'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
 
 function App() {
+  const navigate = useNavigate();
+  const [user, isLoading, error] = useAuthState(auth);
+
+  useEffect(
+    ()=>{
+      if(isLoading){
+        // render component loading
+        return;
+      }
+      if(!user){
+        navigate("/login");
+      }
+      if(error){
+        console.log("Error: ", error);
+      }
+    },
+    [user, isLoading, navigate]
+  );
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar/>
+      <Homepage />
+
     </div>
   );
 }
