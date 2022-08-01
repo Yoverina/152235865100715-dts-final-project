@@ -8,27 +8,24 @@ import { auth } from "../auth/firebase"
 
 const LoginOrRegisterForm = ({ action }) => {
   const navigate = useNavigate();
-  const [user1, isLoading, error] = useAuthState(auth);
+  const [user, isLoading] = useAuthState(auth);
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() =>{
-    console.log("current user: ", user1);
-    console.log("isLoading: ", isLoading)
-    console.log("isError: ", error)
     if(isLoading){
       //bisa return loading page disini
       // return <Loading/>
       return ;
     }
-    if(user1){
+    if(user){
       navigate("/");
     }
   },
-  [user1, isLoading, error]);
+  [user, isLoading, navigate]);
 
   const registerHandler = async(email, pass) =>{
     try {
-      const user = await createUserWithEmailAndPassword(auth, email, pass);
+      await createUserWithEmailAndPassword(auth, email, pass);
     } catch (error){
       setErrorMsg(error.message);
     }
@@ -94,7 +91,7 @@ const LoginOrRegisterForm = ({ action }) => {
         </Alert>
         : ""
       }
-      {user1 ? 
+      {user ? 
         <Alert severity="success" style={{marginBottom: 20}}>
           <AlertTitle><strong>Success</strong></AlertTitle>
           Loading...
