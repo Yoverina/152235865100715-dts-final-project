@@ -9,8 +9,8 @@ const NavBar = () => {
         navigate("/login");
     };
     return (
-        <Box>
-            <Button color="inherit" onClick={buttonLogoutOnClickHandler}>Logout</Button>
+        <Box sx={{backgroundColor: 'black'}}>
+            <Button color="primary" onClick={buttonLogoutOnClickHandler}>Logout</Button>
         </Box>
     )
 };
