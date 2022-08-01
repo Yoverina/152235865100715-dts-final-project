@@ -13,8 +13,11 @@ const ProtectedComponent = ({ children }) => {
                 navigate("/login");
                 return;
             }
+            if(isLoading){
+                return;
+            }
         }, 
-        [user, navigate]
+        [user, navigate, isLoading]
     );
 
     if(isLoading){

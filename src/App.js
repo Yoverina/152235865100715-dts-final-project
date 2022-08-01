@@ -1,36 +1,23 @@
 import './App.css';
 import Homepage from './pages/Homepage';
 import NavBar from './components/NavBar';
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from './auth/firebase'
-import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react';
+
+import { Provider } from 'react-redux'
+import store from './app/store'
+import { ThemeProvider } from '@mui/material';
+import theme from './styles/theme'
 
 function App() {
-  const navigate = useNavigate();
-  const [user, isLoading, error] = useAuthState(auth);
-
-  useEffect(
-    ()=>{
-      if(isLoading){
-        // render component loading
-        return;
-      }
-      if(!user){
-        navigate("/login");
-      }
-      if(error){
-        console.log("Error: ", error);
-      }
-    },
-    [user, isLoading, navigate]
-  );
   return (
-    <div className="App">
-      <NavBar/>
-      <Homepage />
-
-    </div>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <NavBar/>
+          <Homepage />
+        </div>
+      </ThemeProvider>
+    </Provider>
+    
   );
 }
 

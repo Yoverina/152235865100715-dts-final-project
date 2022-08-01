@@ -23,7 +23,6 @@ const registerWithEmailAndPass = async(email, password) =>{
   try{
     //user yang didapat, secara otomatis sudah di sign in
     const user = await createUserWithEmailAndPassword(auth, email, password);
-    console.log("user: ", user.user);
   } catch(err){
     console.log(err.code);
     console.log(err.message);
@@ -34,9 +33,9 @@ const loginWithEmailAndPassword = async(email, password) =>{
   try{
     const loggedInUser = await signInWithEmailAndPassword(auth, email, password);
     console.log("Logged in: ", loggedInUser.user);
-
+    return loggedInUser
   } catch(err){
-    console.log(err);
+    auth.err = err
   }
 };
 const logout = async() =>{
@@ -55,5 +54,5 @@ const resetPass = async(email) =>{
 };
 
 export{
-  auth, registerWithEmailAndPass, loginWithEmailAndPassword, logout, resetPass
+  auth, logout
 };

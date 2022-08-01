@@ -1,71 +1,74 @@
-import { Box, Button, Typography, Container, TextField } from "@mui/material";
+import { Box, Button, Typography, TextField, Alert, AlertTitle } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth"
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 
-import { auth, registerWithEmailAndPass, loginWithEmailAndPassword } from "../auth/firebase"
+import { auth } from "../auth/firebase"
 
 const LoginOrRegisterForm = ({ action }) => {
   const navigate = useNavigate();
-  const [user, isLoading, error] = useAuthState(auth);
-  const [credential, setCredential] = useState({
-    email: "",
-    password: ""
-  });
-
-  const emailOnChangeHandler = (event) => {
-    setCredential({
-      ...credential,
-      email: event.target.value
-    });
-  };
-
-  const passOnChangeHandler = (event) => {
-    setCredential({
-      ...credential,
-      password: event.target.value
-    });
-  };
-
-  const registerHandler = () =>{
-    registerWithEmailAndPass(credential.email, credential.password);
-  };
-  const loginHandler = () => {
-    loginWithEmailAndPassword(credential.email, credential.password);   
-  };
-  const buttonLoginOrRegisterOnClickHandler = () => {
-    if(action === "login"){
-      loginHandler();
-    } else{
-      registerHandler();
-    }
-  }
+  const [user1, isLoading, error] = useAuthState(auth);
+  const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() =>{
-    console.log("current user: ", user);
+    console.log("current user: ", user1);
+    console.log("isLoading: ", isLoading)
+    console.log("isError: ", error)
     if(isLoading){
       //bisa return loading page disini
+      // return <Loading/>
       return ;
     }
-    if(user){
+    if(user1){
       navigate("/");
     }
   },
-  [user, isLoading, navigate]);
+  [user1, isLoading, error]);
+
+  const registerHandler = async(email, pass) =>{
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, pass);
+    } catch (error){
+      setErrorMsg(error.message);
+    }
+  };
+  const loginHandler = async(email, pass) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+    } catch (error){
+      setErrorMsg(error.message);
+    }
+
+  };
+  const buttonLoginOrRegisterOnClickHandler = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+    const pass = data.get('password');
+    if(action === "login"){
+      loginHandler(email, pass);
+    } else{
+      registerHandler(email, pass);
+    }
+  }
+
   return (
-    <Container component="main" maxWidth="xs">
+    <Box width={400}
+    display="flex" flexDirection="column"
+    justifyContent="center"
+    minHeight="100vh" margin="auto">
       <Typography component="h1" variant="h5">
         {action === "login" ? "Login" : "Register Account"}
       </Typography>
-      <Box component="form" noValidate sx={{ mt: 1 }}>
+      <Box component="form" onSubmit={buttonLoginOrRegisterOnClickHandler} noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           required
           fullWidth
           label="Email Address"
+          name="email"
           autoFocus
-          value={credential.email}
-          onChange={emailOnChangeHandler}
         />
         <TextField
           margin="normal"
@@ -73,18 +76,31 @@ const LoginOrRegisterForm = ({ action }) => {
           fullWidth
           label="Password"
           type="password"
+          name="password"
           autoComplete="current-password"
-          value={credential.password}
-          onChange={passOnChangeHandler}
         />
-        <Button
+        <Button type="submit"
           fullWidth
-          variant="contained" onClick={buttonLoginOrRegisterOnClickHandler}
-          sx={{ mt: 3, mb: 2 }}
+          variant="contained"
+          sx={{ backgroundColor: '#eb5e55', mt: 3, mb: 2 }}
         >
           {action === "login" ? "Login" : "Register Account"}
         </Button>
       </Box>
+      {errorMsg ? 
+        <Alert severity="error" style={{marginBottom: 20}}>
+          <AlertTitle><strong>ERROR</strong></AlertTitle>
+          {errorMsg}
+        </Alert>
+        : ""
+      }
+      {user1 ? 
+        <Alert severity="success" style={{marginBottom: 20}}>
+          <AlertTitle><strong>Success</strong></AlertTitle>
+          Loading...
+        </Alert>
+        : ""
+      }
       {action === "login" ? 
         (<Typography>
           Don't have an account?
@@ -95,7 +111,7 @@ const LoginOrRegisterForm = ({ action }) => {
         <Link style={{marginLeft: 5}} to="/login" variant="body2">Login</Link>
       </Typography>
       }
-    </Container>
+    </Box>
   );
 };
 
