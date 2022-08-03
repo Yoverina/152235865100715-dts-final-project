@@ -101,11 +101,11 @@ const LoginOrRegisterForm = ({ action }) => {
       {action === "login" ? 
         (<Typography>
           Don't have an account?
-          <Link style={{marginLeft: 5}} to="/register" variant="body2">Sign Up</Link>
+          <Link style={{ textDecoration: 'none', marginLeft: 5}} to="/register" variant="body2">Sign Up</Link>
         </Typography>
         ) : <Typography>
         Have an account?
-        <Link style={{marginLeft: 5}} to="/login" variant="body2">Login</Link>
+        <Link style={{textDecoration: 'none', marginLeft: 5}} to="/login" variant="body2">Login</Link>
       </Typography>
       }
     </Box>

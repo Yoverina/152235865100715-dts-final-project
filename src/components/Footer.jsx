@@ -14,7 +14,8 @@ const container = {
     flexDirection: "row",
     alignItems: "center",
     padding: "25px 50px 25px 50px",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    marginTop : "50px"
 }
 const icon = {
     width:"30px",
@@ -39,7 +40,7 @@ const Footer = () => {
                     <Typography style={subtitle}>All Around The World</Typography>
                 </Box>
             </Box>
-            <Typography color="primary" fontSize="16px">©2022 - Yoverina Nurdin - Made With ❤️</Typography>
+            <Typography color="secondary" fontSize="16px">©2022 - Yoverina Nurdin - Made With ❤️</Typography>
             <Box>
                 <IconButton aria-label="instagram" href="https://www.instagram.com/yoverina/" target="_blank">
                     <img src="/instagram.png" alt="instagram" style={icon}/>
