@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useStatisticsArgQuery } from "../services/rapidAPI";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 import population from "../static/population.png";
 import active from "../static/active.png";
 import death from "../static/death.png";

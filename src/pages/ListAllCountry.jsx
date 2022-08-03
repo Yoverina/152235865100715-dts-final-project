@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Paper, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useCountriesQuery } from "../services/rapidAPI";
-import Loading from '../pages/Loading';
+import Loading from '../components/Loading';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
