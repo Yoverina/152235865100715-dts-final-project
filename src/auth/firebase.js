@@ -1,11 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, signOut } from "firebase/auth";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "firebase/auth";
-
-// Your web app's Firebase configuration
+// My web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBXGN1EljUMOQTzhLI4EdjHIpAaAfdUI3c",
   authDomain: "react-web-2022.firebaseapp.com",
@@ -19,25 +15,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const registerWithEmailAndPass = async(email, password) =>{
-  try{
-    //user yang didapat, secara otomatis sudah di sign in
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-  } catch(err){
-    console.log(err.code);
-    console.log(err.message);
-  } 
-}
-
-const loginWithEmailAndPassword = async(email, password) =>{
-  try{
-    const loggedInUser = await signInWithEmailAndPassword(auth, email, password);
-    console.log("Logged in: ", loggedInUser.user);
-    return loggedInUser
-  } catch(err){
-    auth.err = err
-  }
-};
 const logout = async() =>{
   try {
     await signOut(auth); 
@@ -45,13 +22,13 @@ const logout = async() =>{
     console.log(err);
   }
 };
-const resetPass = async(email) =>{
-  try {
-    await sendPasswordResetEmail(auth, email);
-  } catch (err) {
-    console.log(err);
-  }
-};
+// const resetPass = async(email) =>{
+//   try {
+//     await sendPasswordResetEmail(auth, email);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 export{
   auth, logout

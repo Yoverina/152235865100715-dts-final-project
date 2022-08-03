@@ -4,11 +4,19 @@ import { useStatisticsQuery } from "../services/rapidAPI";
 import num1 from "../static/1.png";
 import num2 from "../static/2.png";
 import num3 from "../static/3.png";
+import num4 from "../static/4.png";
+import num5 from "../static/5.png";
 import small_ppl from "../static/small-people.png";
 import Loading from "./Loading";
 
+const subtitle = {
+  fontWeight: "700",
+  fontSize: "32px",
+  marginBottom: 20,
+};
+
 const paper = {
-  width: "30%",
+  width: "20%",
   height: "80px",
   display: "flex",
   alignItems: "center",
@@ -20,7 +28,7 @@ const paper = {
 const boxStyle = {
   display: "flex",
   flexDirection: "column",
-  alignItems: "center"
+  alignItems: "center",
 };
 
 const title = {
@@ -38,9 +46,8 @@ const TopThreeNewCases = () => {
       let responseTopThree = data.response
         .filter((data) => data.cases.new > 1000)
         .sort((a, b) => b.cases.new - a.cases.new)
-        .slice(1, 4);
+        .slice(1, 6);
       setTopThree(responseTopThree);
-        console.log(responseTopThree[0])
       setDataReady(true);
     }
   }, [data]);
@@ -79,6 +86,26 @@ const TopThreeNewCases = () => {
                 {dataReady ? topThree[2].cases.new : <Loading />}
               </Typography>
               <Typography>{dataReady ? topThree[2].country : "-"}</Typography>
+            </Box>
+            <img src={small_ppl} alt="small_people.png" />
+          </Paper>
+          <Paper sx={paper} elevation={5}>
+            <img src={num4} alt="4.png" />
+            <Box style={boxStyle}>
+              <Typography style={title} color="ternary.main">
+                {dataReady ? topThree[3].cases.new : <Loading />}
+              </Typography>
+              <Typography>{dataReady ? topThree[3].country : "-"}</Typography>
+            </Box>
+            <img src={small_ppl} alt="small_people.png" />
+          </Paper>
+          <Paper sx={paper} elevation={5}>
+            <img src={num5} alt="5.png" />
+            <Box style={boxStyle}>
+              <Typography style={title} color="ternary.main">
+                {dataReady ? topThree[4].cases.new : <Loading />}
+              </Typography>
+              <Typography>{dataReady ? topThree[4].country : "-"}</Typography>
             </Box>
             <img src={small_ppl} alt="small_people.png" />
           </Paper>

@@ -15,7 +15,6 @@ const container = {
     alignItems: "center",
     padding: "25px 50px 25px 50px",
     justifyContent: "space-between",
-    marginTop : "50px"
 }
 const icon = {
     width:"30px",

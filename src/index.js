@@ -9,17 +9,31 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProtectedComponent from './components/ProtectedComponent';
+import { ThemeProvider } from '@mui/material';
+import { Provider } from 'react-redux'
+import store from './app/store'
+import theme from './styles/theme'
+import CountryDetails from './pages/CountryDetails';
+import NotFound from './pages/NotFound';
+import ListAllCountry from './pages/ListAllCountry';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<ProtectedComponent><App/></ProtectedComponent>}/>
-        <Route path='login' element={<LoginPage/>}/>
-        <Route path='register' element={<RegisterPage/>}/>
-      </Routes>
-    </BrowserRouter>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <BrowserRouter>
+              <Routes>
+                <Route path='/' element={<ProtectedComponent><App/></ProtectedComponent>}/>
+                <Route path='login' element={<LoginPage/>}/>
+                <Route path='register' element={<RegisterPage/>}/>
+                <Route path='list-all-country/' element={<ListAllCountry/>}/>
+                <Route path='country-details/:country' element={<CountryDetails/>}/>
+                <Route path="*" element={<NotFound/>} />
+              </Routes>
+            </BrowserRouter>
+          </ThemeProvider>
+        </Provider>
   </React.StrictMode>
 );
 

@@ -28,7 +28,7 @@ const ListAllCountry = () => {
     return(
         <>
         <NavBar></NavBar>
-        <Box display= "flex" alignItems="center" flexDirection="column" mt={5}>
+        <Box display= "flex" alignItems="center" flexDirection="column" py={5}>
             <Typography style={title}>List of All Country</Typography>
             <Typography>Select one to see details</Typography>
             <Box display="flex" flexDirection="row" justifyContent="center" flexWrap="wrap" mt={5} px={15}>
