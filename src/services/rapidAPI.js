@@ -18,6 +18,13 @@ export const rapidAPI = createApi({
                 headers: rapidHeader
             })
         }),
+        statisticsArg: builder.query({
+            query: (country) => ({
+                url: `/statistics?country=${country}`,
+                method: 'GET',
+                headers: rapidHeader
+            })
+        }),
         history: builder.query({
             query: (arg) => {
                 const {country, date} = arg;
@@ -29,10 +36,17 @@ export const rapidAPI = createApi({
                 };
             },
         }),
+        countries: builder.query({
+            query: () => ({
+                url: `/countries`,
+                method: 'GET',
+                headers: rapidHeader
+            })
+        }),
         // another endpoints here
     }),
 })
 
 export const {
-    useStatisticsQuery, useHistoryQuery
+    useStatisticsQuery, useHistoryQuery, useCountriesQuery, useStatisticsArgQuery
 } = rapidAPI

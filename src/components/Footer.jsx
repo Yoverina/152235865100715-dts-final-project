@@ -6,7 +6,6 @@ const title = {
     fontSize:"32px",
     fontWeight:"400",
     color:"#FFFFFF",
-    marginLeft: "10px"
 }
 
 const container = {
@@ -14,28 +13,42 @@ const container = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    padding: "25px 50px 25px 50px"
+    padding: "25px 50px 25px 50px",
+    justifyContent: "space-between"
 }
-const img = {
+const icon = {
     width:"30px",
     height:"30px"
+}
+const subtitle = {
+    fontFamily: "inter",
+    fontSize: "12px",
+    fontWeight: 100,
+    fontStyle: "italic",
+    color: "#FFFFFF"
 }
 
 const Footer = () => {
     return (
         <Box style={container}>
+            <Box display="flex" flexDirection="row" alignItems="center">
             <img src="/logo.png" alt="logo" width="60px" height="60px"/>
-            <Typography style={title}>COVIDY</Typography>
-            <Typography margin="auto" color="primary" fontSize="12px">©2022 - Yoverina Nurdin - Made With ❤️</Typography>
+                <Box display="flex" flexDirection="column" marginLeft="10px">
+                    <Typography style={title}>COVIDY</Typography>
+                    <Typography style={subtitle}>Providing Covid-19 Information</Typography>
+                    <Typography style={subtitle}>All Around The World</Typography>
+                </Box>
+            </Box>
+            <Typography color="primary" fontSize="16px">©2022 - Yoverina Nurdin - Made With ❤️</Typography>
             <Box>
                 <IconButton aria-label="instagram" href="https://www.instagram.com/yoverina/" target="_blank">
-                    <img src="/instagram.png" alt="instagram" style={img}/>
+                    <img src="/instagram.png" alt="instagram" style={icon}/>
                 </IconButton>
                 <IconButton aria-label="linkedin" href="https://www.linkedin.com/in/yoverina" target="_blank">
-                    <img src="/linkedin.png" alt="linkedin" style={img}/>
+                    <img src="/linkedin.png" alt="linkedin" style={icon}/>
                 </IconButton>
                 <IconButton aria-label="facebook" href="https://www.facebook.com/yoverina.nurdin/" target="_blank">
-                    <img src="/facebook.png" alt="facebook" style={img}/>
+                    <img src="/facebook.png" alt="facebook" style={icon}/>
                 </IconButton>
             </Box>
         </Box>

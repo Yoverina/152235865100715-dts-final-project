@@ -1,14 +1,13 @@
 import { createTheme } from '@mui/material/styles';
-import "@fontsource/inter/600.css"
+import "@fontsource/inter"
 
 const theme = createTheme({
     palette: {
-      type: 'dark',
       primary: {
-        main: '#FFFFFF',
+        main: '#222121',
       },
       secondary: {
-        main: '#222121',
+        main: '#FFFFFF',
       },
       ternary:{
         main: "#E85859"
@@ -16,7 +15,7 @@ const theme = createTheme({
     },
     typography:{
       fontFamily: 'inter'
-    }
+    },
   });
 
 export default theme;
