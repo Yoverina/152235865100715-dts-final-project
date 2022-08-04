@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import CountryHistoryGraph from "../components/CountryHistoryGraph";
 import TopFiveTotalCases from "../components/TopFiveTotalCases";
 import TopThreeNewCases from "../components/TopThreeNewCases";
 

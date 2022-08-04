@@ -10,8 +10,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { Box, Paper, Typography } from "@mui/material";
-import { useHistoryQuery, useStatisticsQuery } from "../services/rapidAPI";
+import { Paper } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,

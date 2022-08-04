@@ -113,10 +113,9 @@ const CountryDetails = () => {
       {(isLoading || isFetching || !dataReady) ? (
         <Box display="flex" justifyContent="center"><Loading /></Box>
       ) : (
-        <Box px={10}>
-          <CountryHistoryGraph country={countryDetails.country} date={countryDetails.day}/>
-          <Typography m={1} fontSize="32px" fontWeight={600}>{countryDetails.country}</Typography>
-          <Typography m={1}>Data fetched: {countryDetails.day ? countryDetails.day : "-"}</Typography>
+        <Box px={10} py={5}>
+          <Typography mx={1} fontSize="32px" fontWeight={600}>{countryDetails.country}</Typography>
+          <Typography mx={1}>Data fetched: {countryDetails.day ? countryDetails.day : "-"}</Typography>
           <Box width="55%">
             <Paper sx={paper1}>
               <Box style={boxStyle}>
@@ -165,6 +164,11 @@ const CountryDetails = () => {
               </Paper>
             </Box>
           </Box>
+          <Box my={3}>
+            <Typography m={1} fontSize="20px" fontWeight={600}>History Data:</Typography>
+            <CountryHistoryGraph country={countryDetails.country} date={countryDetails.day}/>
+          </Box>
+          
         </Box>
       )}
       

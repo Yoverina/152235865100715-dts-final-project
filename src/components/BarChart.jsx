@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { Box, Paper, Typography } from "@mui/material";
+import { Paper } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
