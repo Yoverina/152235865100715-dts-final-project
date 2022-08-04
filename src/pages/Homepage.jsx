@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import CountryHistoryGraph from "../components/CountryHistoryGraph";
 import TopFiveTotalCases from "../components/TopFiveTotalCases";
 import TopThreeNewCases from "../components/TopThreeNewCases";
 
@@ -16,7 +15,6 @@ const Homepage = () => {
         <Typography style={subtitle}>Top 5 New Cases Today</Typography>
         <Typography mb={2}>Data fetched: {new Date().toISOString().slice(0, 10)}</Typography>
         <TopThreeNewCases />
-        {/* <CountryHistoryGraph/> */}
       </Box>
       <Box mb={5}>
         <Typography style={subtitle}>Top 10 High Risk Country</Typography>
