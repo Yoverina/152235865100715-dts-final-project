@@ -9,11 +9,6 @@ import num5 from "../static/5.png";
 import small_ppl from "../static/small-people.png";
 import Loading from "./Loading";
 
-const subtitle = {
-  fontWeight: "700",
-  fontSize: "32px",
-  marginBottom: 20,
-};
 
 const paper = {
   width: "20%",
@@ -37,7 +32,7 @@ const title = {
 };
 
 const TopThreeNewCases = () => {
-  const { data, error, isFetching } = useStatisticsQuery();
+  const { data, isFetching } = useStatisticsQuery();
   const [dataReady, setDataReady] = useState(false);
   const [topThree, setTopThree] = useState([]);
 
