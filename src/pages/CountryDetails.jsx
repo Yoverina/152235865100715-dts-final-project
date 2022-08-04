@@ -124,7 +124,7 @@ const CountryDetails = () => {
           <Typography mx={1}>
             Data fetched: {countryDetails.day ? countryDetails.day : "-"}
           </Typography>
-          <Box width="55%">
+          <Box width="80%">
             <Paper sx={paper1}>
               <Box style={boxStyle}>
                 <Typography style={title}>
