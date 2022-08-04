@@ -5,6 +5,7 @@ import {
   TextField,
   Alert,
   AlertTitle,
+  Paper,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -69,42 +70,28 @@ const LoginOrRegisterForm = ({ action }) => {
       height="100vh"
       flexDirection="column"
     >
-      <img src="/logo.png" alt="logo" width="7%" />
+      <img src="/logo.png" alt="logo" width="60px" />
       <Typography color="primary.main" style={title}>
         COVIDY
       </Typography>
       {!user && (isLoading || isFetching) ? (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          height="100vh"
-        >
+        <Box display="flex" justifyContent="center" alignItems="center">
           <Loading />
         </Box>
       ) : (
-        <Box
-          width="30%"
-          padding={5}
-          display="flex"
-          flexDirection="column"
-          borderColor="primary.main"
-          border={1.5}
-          borderRadius={2}
-        >
-          <Typography component="h1" variant="h5">
+        <Paper sx={{ p: 5 }} elevation={5}>
+          <Typography component="h1" variant="h6">
             {action === "login" ? "Login" : "Register Account"}
           </Typography>
           <Box
             component="form"
             onSubmit={buttonLoginOrRegisterOnClickHandler}
             noValidate
-            sx={{ mt: 1 }}
+            sx={{ mt: 1, display:"flex", flexDirection:"column" }}
           >
             <TextField
               margin="normal"
               required
-              fullWidth
               label="Email Address"
               name="email"
               autoFocus
@@ -112,7 +99,6 @@ const LoginOrRegisterForm = ({ action }) => {
             <TextField
               margin="normal"
               required
-              fullWidth
               label="Password"
               type="password"
               name="password"
@@ -120,7 +106,6 @@ const LoginOrRegisterForm = ({ action }) => {
             />
             <Button
               type="submit"
-              fullWidth
               variant="contained"
               sx={{ backgroundColor: "#eb5e55", mt: 3, mb: 2 }}
             >
@@ -170,7 +155,7 @@ const LoginOrRegisterForm = ({ action }) => {
               </Link>
             </Typography>
           )}
-        </Box>
+        </Paper>
       )}
     </Box>
   );
