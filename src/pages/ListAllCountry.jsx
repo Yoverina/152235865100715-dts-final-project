@@ -16,9 +16,6 @@ const ListAllCountry = () => {
     const [countries, setCountries] = useState([]);
     const { data, error, isLoading } = useCountriesQuery();
     useEffect(()=>{
-        console.log("data: ", data);
-        console.log("error: ", error);
-        console.log("isLoading: ", isLoading);
         if(data){
             setCountries(data.response)
         }

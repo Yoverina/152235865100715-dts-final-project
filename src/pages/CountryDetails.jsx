@@ -5,6 +5,7 @@ import { useStatisticsArgQuery } from "../services/rapidAPI";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Loading from "../components/Loading";
+import NotFound from "../pages/NotFound";
 import population from "../static/population.png";
 import active from "../static/active.png";
 import death from "../static/death.png";
@@ -30,11 +31,12 @@ const CountryDetails = () => {
       setDataReady(true);
     }
     if (error) {
+      console.log("error: ", error);
     }
     if (isLoading) {
       return;
     }
-  }, [data, error, isLoading, isFetching]);
+  }, [data, error, isLoading, isFetching, params]);
   const paper1 = {
     backgroundColor: "#2C4D8D",
     height: "80px",
@@ -115,6 +117,10 @@ const CountryDetails = () => {
       {isLoading || isFetching || !dataReady ? (
         <Box display="flex" justifyContent="center">
           <Loading />
+        </Box>
+      ) : !countryDetails ? (
+        <Box my={4}>
+          <NotFound />
         </Box>
       ) : (
         <Box px={10} py={5}>

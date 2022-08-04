@@ -1,14 +1,12 @@
 import { Box, Typography } from "@mui/material";
-import NavBar from "../components/NavBar";
+
 import error404 from "../static/404.png";
-import { auth } from "../auth/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 
 const NotFound = () => {
-  const [user] = useAuthState(auth);
+  
   return (
     <>
-      {user ? <NavBar /> : <></>}
       <Box
         display="flex"
         justifyContent="center"
