@@ -24,7 +24,7 @@ root.render(
           <ThemeProvider theme={theme}>
             <BrowserRouter>
               <Routes>
-                <Route path='/' element={<ProtectedComponent><App/></ProtectedComponent>}/>
+                <Route path='/' element={<ProtectedComponent loginOnly={false}><App/></ProtectedComponent>}/>
                 <Route path='login' element={<ProtectedComponent loginOnly={false}><LoginPage/></ProtectedComponent>}/>
                 <Route path='register' element={<ProtectedComponent loginOnly={false}><RegisterPage/></ProtectedComponent>}/>
                 <Route path='list-all-country/' element={<ProtectedComponent><ListAllCountry/></ProtectedComponent>}/>

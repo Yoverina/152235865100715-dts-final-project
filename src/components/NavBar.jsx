@@ -1,4 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
+import { auth } from "../auth/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../auth/firebase";
 
@@ -10,6 +12,7 @@ const title = {
 };
 
 const NavBar = () => {
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const buttonLogoutOnClickHandler = async () => {
     await logout();
@@ -17,6 +20,9 @@ const NavBar = () => {
   };
   const buttonListCountryOnClickHandler = () => {
     navigate("/list-all-country");
+  };
+  const buttonLoginOnClickHandler = ()=>{
+    navigate("/login");
   };
 
   return (
@@ -60,7 +66,7 @@ const NavBar = () => {
         </Button>
         <Button
           color="secondary"
-          onClick={buttonLogoutOnClickHandler}
+          onClick={user? buttonLogoutOnClickHandler : buttonLoginOnClickHandler}
           sx={{
             px: 3,
             fontSize: "16px",
@@ -71,8 +77,7 @@ const NavBar = () => {
             borderRadius: 0,
             height: "100%",
           }}
-        >
-          Logout
+        >{user ? "Logout" : "Login"}
         </Button>
       </Box>
     </Box>
