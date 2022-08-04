@@ -4,7 +4,7 @@ import BarChart from "./BarChart";
 import Loading from "./Loading";
 import { Box } from "@mui/material";
 
-const TopFiveTotalCases = () => {
+const TopTenTotalCases = () => {
   const [chartData, setChartData] = useState({});
   const [dataReady, setDataReady] = useState(false);
   const { data, error, isFetching } = useStatisticsQuery();
@@ -59,4 +59,4 @@ const TopFiveTotalCases = () => {
   );
 };
 
-export default TopFiveTotalCases;
+export default TopTenTotalCases;

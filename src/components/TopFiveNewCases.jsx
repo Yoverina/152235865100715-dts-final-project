@@ -27,10 +27,10 @@ const boxStyle = {
 
 const title = {
   fontWeight: "900",
-  fontSize: "32px",
+  fontSize: "18px",
 };
 
-const TopThreeNewCases = () => {
+const TopFiveNewCases = () => {
   const { data, isFetching } = useStatisticsQuery();
   const [dataReady, setDataReady] = useState(false);
   const [topThree, setTopThree] = useState([]);
@@ -109,4 +109,4 @@ const TopThreeNewCases = () => {
   );
 };
 
-export default TopThreeNewCases;
+export default TopFiveNewCases;
