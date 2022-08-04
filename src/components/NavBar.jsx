@@ -4,7 +4,7 @@ import { logout } from "../auth/firebase";
 
 const title = {
   fontFamily: "orbitron",
-  fontSize: "24px",
+  fontSize: "20px",
   fontWeight: "400",
   marginLeft: "10px",
 };
@@ -27,13 +27,13 @@ const NavBar = () => {
         justifyContent: "space-between",
         bgcolor: "primary.main",
         px: 10,
-        height: "80px",
+        height: 50
       }}
     >
       <Box
         sx={{ display: "flex", alignItems: "center", flexDirection: "row" }}
       >
-        <img src="/logo.png" alt="logo" width="40px" height="40px" />
+        <img src="/logo.png" alt="logo" width="30px" height="30px" />
         <Link to="/" style={{ textDecoration: "none" }}>
           <Typography color="secondary" style={title}>
             COVIDY
