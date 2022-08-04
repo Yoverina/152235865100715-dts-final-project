@@ -9,7 +9,6 @@ import num5 from "../static/5.png";
 import small_ppl from "../static/small-people.png";
 import Loading from "./Loading";
 
-
 const paper = {
   width: "20%",
   height: "80px",

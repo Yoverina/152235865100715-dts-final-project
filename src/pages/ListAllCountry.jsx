@@ -50,7 +50,7 @@ const ListAllCountry = () => {
                 }
             </Box>
         </Box>
-        <Footer></Footer>
+        {data ? <Footer></Footer> : <></>}
         </>
 
         
