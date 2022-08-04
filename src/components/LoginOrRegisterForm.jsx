@@ -54,20 +54,43 @@ const LoginOrRegisterForm = ({ action }) => {
     }
   };
 
+  const title = {
+    fontFamily: "orbitron",
+    fontSize: "24px",
+    fontWeight: "400",
+    marginBottom: "20px",
+  };
+
   return (
-    <Box>
-      {(!user && (isLoading || isFetching)) ? (
-        <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      height="100vh"
+      flexDirection="column"
+    >
+      <img src="/logo.png" alt="logo" width="7%" />
+      <Typography color="primary.main" style={title}>
+        COVIDY
+      </Typography>
+      {!user && (isLoading || isFetching) ? (
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100vh"
+        >
           <Loading />
         </Box>
       ) : (
         <Box
-          width={400}
+          width="30%"
+          padding={5}
           display="flex"
           flexDirection="column"
-          justifyContent="center"
-          minHeight="100vh"
-          margin="auto"
+          borderColor="primary.main"
+          border={1.5}
+          borderRadius={2}
         >
           <Typography component="h1" variant="h5">
             {action === "login" ? "Login" : "Register Account"}
