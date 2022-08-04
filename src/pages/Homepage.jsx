@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import TopTenTotalCases from "../components/TopTenTotalCases";
-import TopFiveNewCases from "../components/TopFiveNewCases";
+import TopTenTotalCases from "../containers/TopTenTotalCases";
+import TopFiveNewCases from "../containers/TopFiveNewCases";
 
 const subtitle = {
   fontWeight: "700",

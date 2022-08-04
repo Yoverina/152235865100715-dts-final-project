@@ -7,7 +7,7 @@ import num3 from "../static/3.png";
 import num4 from "../static/4.png";
 import num5 from "../static/5.png";
 import small_ppl from "../static/small-people.png";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 
 const paper = {
   width: "20%",

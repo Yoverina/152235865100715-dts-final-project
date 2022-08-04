@@ -12,7 +12,7 @@ import death from "../static/death.png";
 import critical from "../static/critical.png";
 import recovered from "../static/recover.png";
 import newCases from "../static/new.png";
-import CountryHistoryGraph from "../components/CountryHistoryGraph";
+import CountryHistoryGraph from "../containers/CountryHistoryGraph";
 
 const CountryDetails = () => {
   let params = useParams();

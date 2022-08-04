@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useStatisticsQuery } from "../services/rapidAPI";
-import BarChart from "./BarChart";
-import Loading from "./Loading";
+import BarChart from "../components/BarChart";
+import Loading from "../components/Loading";
 import { Box } from "@mui/material";
 
 const TopTenTotalCases = () => {

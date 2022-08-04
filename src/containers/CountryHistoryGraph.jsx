@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistoryQuery } from "../services/rapidAPI";
-import LineChart from "./LineChart";
-import Loading from "./Loading";
+import LineChart from "../components/LineChart";
+import Loading from "../components/Loading";
 import { Box, Paper, Typography } from "@mui/material";
 
 const title = {
