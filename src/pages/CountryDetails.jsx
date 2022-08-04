@@ -11,6 +11,7 @@ import death from "../static/death.png";
 import critical from "../static/critical.png";
 import recovered from "../static/recover.png";
 import newCases from "../static/new.png";
+import CountryHistoryGraph from "../components/CountryHistoryGraph";
 
 const CountryDetails = () => {
   let params = useParams();
@@ -20,25 +21,15 @@ const CountryDetails = () => {
   const { data, error, isLoading, isFetching } = useStatisticsArgQuery(params?.country);
 
   useEffect(() => {
-    // const fetchData = async() => {
-    //     await data;
-    // }
-    // fetchData();
     if(isFetching){
-      console.log("isFetching: ", isFetching);
     }
     if (data) {
       setCountryDetails(data.response[0]);
       setDataReady(true);
-      console.log("ini data: ", data);
-      console.log("data.response: ", data.response);
-      console.log("countryDetails: ", data.response[0]);
     }
     if (error) {
-      console.log("ini error: ", error);
     }
     if (isLoading){
-      console.log("isLoading: ", isLoading);
       return;
     }
   }, [data, error, isLoading, isFetching]);
@@ -119,11 +110,11 @@ const CountryDetails = () => {
   return (
     <>
       <NavBar></NavBar>
-
       {(isLoading || isFetching || !dataReady) ? (
         <Box display="flex" justifyContent="center"><Loading /></Box>
       ) : (
         <Box px={10}>
+          <CountryHistoryGraph country={countryDetails.country} date={countryDetails.day}/>
           <Typography m={1} fontSize="32px" fontWeight={600}>{countryDetails.country}</Typography>
           <Typography m={1}>Data fetched: {countryDetails.day ? countryDetails.day : "-"}</Typography>
           <Box width="55%">
@@ -176,7 +167,7 @@ const CountryDetails = () => {
           </Box>
         </Box>
       )}
-
+      
       <Footer></Footer>
     </>
   );

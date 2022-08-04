@@ -27,8 +27,8 @@ export const rapidAPI = createApi({
         }),
         history: builder.query({
             query: (arg) => {
+                console.log(arg);
                 const {country, date} = arg;
-                console.log('arg: ', arg);
                 return{
                     url: `/history?country=${country}&day=${date}`,
                     method: 'GET',
