@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import TopFiveTotalCases from "../components/TopFiveTotalCases";
-import TopThreeNewCases from "../components/TopThreeNewCases";
+import TopTenTotalCases from "../components/TopTenTotalCases";
+import TopFiveNewCases from "../components/TopFiveNewCases";
 
 const subtitle = {
   fontWeight: "700",
@@ -14,12 +14,12 @@ const Homepage = () => {
       <Box mb={5}>
         <Typography style={subtitle}>Top 5 New Cases Today</Typography>
         <Typography mb={2}>Data fetched: {new Date().toISOString().slice(0, 10)}</Typography>
-        <TopThreeNewCases />
+        <TopFiveNewCases />
       </Box>
       <Box mb={5}>
         <Typography style={subtitle}>Top 10 High Risk Country</Typography>
         <Typography mb={2}>Data fetched: {new Date().toISOString().slice(0, 10)}</Typography>
-        <TopFiveTotalCases />
+        <TopTenTotalCases />
       </Box>
     </Box>
   );
