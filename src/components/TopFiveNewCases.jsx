@@ -33,15 +33,15 @@ const title = {
 const TopFiveNewCases = () => {
   const { data, isFetching } = useStatisticsQuery();
   const [dataReady, setDataReady] = useState(false);
-  const [topThree, setTopThree] = useState([]);
+  const [topFive, setTopFive] = useState([]);
 
   useEffect(() => {
     if (data) {
-      let responseTopThree = data.response
+      let responseTopFive = data.response
         .filter((data) => data.cases.new > 1000)
         .sort((a, b) => b.cases.new - a.cases.new)
         .slice(1, 6);
-      setTopThree(responseTopThree);
+      setTopFive(responseTopFive);
       setDataReady(true);
     }
   }, [data]);
@@ -57,9 +57,9 @@ const TopFiveNewCases = () => {
             <img src={num1} alt="1.png" />
             <Box style={boxStyle}>
               <Typography style={title} color="ternary.main">
-                {dataReady ? topThree[0].cases.new : 0}
+                {dataReady ? topFive[0].cases.new : 0}
               </Typography>
-              <Typography>{dataReady ? topThree[0].country : "-"}</Typography>
+              <Typography>{dataReady ? topFive[0].country : "-"}</Typography>
             </Box>
             <img src={small_ppl} alt="small_people.png" />
           </Paper>
@@ -67,9 +67,9 @@ const TopFiveNewCases = () => {
             <img src={num2} alt="2.png" />
             <Box style={boxStyle}>
               <Typography style={title} color="ternary.main">
-                {dataReady ? topThree[1].cases.new : <Loading />}
+                {dataReady ? topFive[1].cases.new : <Loading />}
               </Typography>
-              <Typography>{dataReady ? topThree[1].country : "-"}</Typography>
+              <Typography>{dataReady ? topFive[1].country : "-"}</Typography>
             </Box>
             <img src={small_ppl} alt="small_people.png" />
           </Paper>
@@ -77,9 +77,9 @@ const TopFiveNewCases = () => {
             <img src={num3} alt="3.png" />
             <Box style={boxStyle}>
               <Typography style={title} color="ternary.main">
-                {dataReady ? topThree[2].cases.new : <Loading />}
+                {dataReady ? topFive[2].cases.new : <Loading />}
               </Typography>
-              <Typography>{dataReady ? topThree[2].country : "-"}</Typography>
+              <Typography>{dataReady ? topFive[2].country : "-"}</Typography>
             </Box>
             <img src={small_ppl} alt="small_people.png" />
           </Paper>
@@ -87,9 +87,9 @@ const TopFiveNewCases = () => {
             <img src={num4} alt="4.png" />
             <Box style={boxStyle}>
               <Typography style={title} color="ternary.main">
-                {dataReady ? topThree[3].cases.new : <Loading />}
+                {dataReady ? topFive[3].cases.new : <Loading />}
               </Typography>
-              <Typography>{dataReady ? topThree[3].country : "-"}</Typography>
+              <Typography>{dataReady ? topFive[3].country : "-"}</Typography>
             </Box>
             <img src={small_ppl} alt="small_people.png" />
           </Paper>
@@ -97,9 +97,9 @@ const TopFiveNewCases = () => {
             <img src={num5} alt="5.png" />
             <Box style={boxStyle}>
               <Typography style={title} color="ternary.main">
-                {dataReady ? topThree[4].cases.new : <Loading />}
+                {dataReady ? topFive[4].cases.new : <Loading />}
               </Typography>
-              <Typography>{dataReady ? topThree[4].country : "-"}</Typography>
+              <Typography>{dataReady ? topFive[4].country : "-"}</Typography>
             </Box>
             <img src={small_ppl} alt="small_people.png" />
           </Paper>

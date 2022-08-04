@@ -11,31 +11,31 @@ const TopTenTotalCases = () => {
 
   useEffect(() => {
     if (data) {
-      let responseTopFive = data.response
+      let responseTopTen = data.response
         .filter((data) => data.cases.total > 100000)
         .sort((a, b) => b.cases.total - a.cases.total)
         .slice(1, 11);
 
       const dataForChart = {
-        labels: responseTopFive.map((countryData) => countryData.country),
+        labels: responseTopTen.map((countryData) => countryData.country),
         datasets: [
           {
             label: "Active (thousand)",
-            data: responseTopFive.map((countryData) =>
+            data: responseTopTen.map((countryData) =>
               Math.round(countryData.cases.active / 1000)
             ),
             backgroundColor: "rgba(100, 150, 4, 1)",
           },
           {
             label: "Critical",
-            data: responseTopFive.map(
+            data: responseTopTen.map(
               (countryData) => countryData.cases.critical
             ),
             backgroundColor: "rgba(53, 162, 235, 1)",
           },
           {
             label: "Deaths (thousand)",
-            data: responseTopFive.map((countryData) =>
+            data: responseTopTen.map((countryData) =>
               Math.round(countryData.deaths.total / 1000)
             ),
             backgroundColor: "rgba(255, 99, 132, 1)",
