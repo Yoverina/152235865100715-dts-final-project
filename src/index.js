@@ -25,10 +25,10 @@ root.render(
             <BrowserRouter>
               <Routes>
                 <Route path='/' element={<ProtectedComponent><App/></ProtectedComponent>}/>
-                <Route path='login' element={<LoginPage/>}/>
-                <Route path='register' element={<RegisterPage/>}/>
-                <Route path='list-all-country/' element={<ListAllCountry/>}/>
-                <Route path='country-details/:country' element={<CountryDetails/>}/>
+                <Route path='login' element={<ProtectedComponent loginOnly={false}><LoginPage/></ProtectedComponent>}/>
+                <Route path='register' element={<ProtectedComponent loginOnly={false}><RegisterPage/></ProtectedComponent>}/>
+                <Route path='list-all-country/' element={<ProtectedComponent><ListAllCountry/></ProtectedComponent>}/>
+                <Route path='country-details/:country' element={<ProtectedComponent><CountryDetails/></ProtectedComponent>}/>
                 <Route path="*" element={<NotFound/>} />
               </Routes>
             </BrowserRouter>
