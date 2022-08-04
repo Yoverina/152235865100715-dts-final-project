@@ -22,89 +22,89 @@ const CountryHistoryGraph = ({ country, date }) => {
     date: pastDate,
   });
 
-  const testedHistoryChart = () => ({
-    labels: historyData.map((value) => value.time.split("T")[1]),
-    datasets: [
-      {
-        label: "Tested",
-        data: historyData.map((value) => value.tests.total),
-        borderColor: "rgb(44, 77, 141)",
-        backgroundColor: "rgba(44, 77, 141, 1)",
-      },
-    ],
-  });
-  const recoveredHistoryChart = () => ({
-    labels: historyData.map((value) => value.time.split("T")[1]),
-    datasets: [
-      {
-        label: "Recovered",
-        data: historyData.map((value) => value.cases.recovered),
-        borderColor: "rgb(59, 149, 84)",
-        backgroundColor: "rgba(59, 149, 84, 1)",
-      },
-    ],
-  });
-  const deathsHistoryChart = () => ({
-    labels: historyData.map((value) => value.time.split("T")[1]),
-    datasets: [
-      {
-        label: "Death",
-        data: historyData.map((value) => value.deaths.total),
-        borderColor: "rgb(93, 99, 94)",
-        backgroundColor: "rgba(93, 99, 94, 1)",
-      },
-    ],
-  });
-  const newCasesHistoryChart = () => ({
-    labels: historyData.map((value) => value.time.split("T")[1]),
-    datasets: [
-      {
-        label: "New",
-        data: historyData.map((value) => {
-          return parseInt(value.cases.new.substring(1));
-        }),
-        borderColor: "rgb(232, 88, 89)",
-        backgroundColor: "rgba(232, 88, 89, 1)",
-      },
-    ],
-  });
-  const activeHistoryChart = () => ({
-    labels: historyData.map((value) => value.time.split("T")[1]),
-    datasets: [
-      {
-        label: "Active",
-        data: historyData.map((value) => value.cases.active),
-        borderColor: "rgb(214, 149, 74)",
-        backgroundColor: "rgba(214, 149, 74, 1)",
-      },
-    ],
-  });
-  const criticalHistoryChart = () => ({
-    labels: historyData.map((value) => value.time.split("T")[1]),
-    datasets: [
-      {
-        label: "Critical",
-        data: historyData.map((value) => {
-          return value.cases.critical;
-        }),
-        borderColor: "rgb(169, 52, 52)",
-        backgroundColor: "rgba(169, 52, 52, 1)",
-      },
-    ],
-  });
-
-  const createChartData = () => {
-    const chart = [];
-    chart.push(testedHistoryChart());
-    chart.push(recoveredHistoryChart());
-    chart.push(deathsHistoryChart());
-    chart.push(newCasesHistoryChart());
-    chart.push(activeHistoryChart());
-    chart.push(criticalHistoryChart());
-    return chart;
-  };
-
   useEffect(() => {
+    const testedHistoryChart = () => ({
+      labels: historyData.map((value) => value.time.split("T")[1]),
+      datasets: [
+        {
+          label: "Tested",
+          data: historyData.map((value) => value.tests.total),
+          borderColor: "rgb(44, 77, 141)",
+          backgroundColor: "rgba(44, 77, 141, 1)",
+        },
+      ],
+    });
+    const recoveredHistoryChart = () => ({
+      labels: historyData.map((value) => value.time.split("T")[1]),
+      datasets: [
+        {
+          label: "Recovered",
+          data: historyData.map((value) => value.cases.recovered),
+          borderColor: "rgb(59, 149, 84)",
+          backgroundColor: "rgba(59, 149, 84, 1)",
+        },
+      ],
+    });
+    const deathsHistoryChart = () => ({
+      labels: historyData.map((value) => value.time.split("T")[1]),
+      datasets: [
+        {
+          label: "Death",
+          data: historyData.map((value) => value.deaths.total),
+          borderColor: "rgb(93, 99, 94)",
+          backgroundColor: "rgba(93, 99, 94, 1)",
+        },
+      ],
+    });
+    const newCasesHistoryChart = () => ({
+      labels: historyData.map((value) => value.time.split("T")[1]),
+      datasets: [
+        {
+          label: "New",
+          data: historyData.map((value) => {
+            let newCasesData = value.cases.new ? parseInt(value.cases.new.substring(1)) : 0
+            return newCasesData;
+          }),
+          borderColor: "rgb(232, 88, 89)",
+          backgroundColor: "rgba(232, 88, 89, 1)",
+        },
+      ],
+    });
+    const activeHistoryChart = () => ({
+      labels: historyData.map((value) => value.time.split("T")[1]),
+      datasets: [
+        {
+          label: "Active",
+          data: historyData.map((value) => value.cases.active),
+          borderColor: "rgb(214, 149, 74)",
+          backgroundColor: "rgba(214, 149, 74, 1)",
+        },
+      ],
+    });
+    const criticalHistoryChart = () => ({
+      labels: historyData.map((value) => value.time.split("T")[1]),
+      datasets: [
+        {
+          label: "Critical",
+          data: historyData.map((value) => {
+            return value.cases.critical;
+          }),
+          borderColor: "rgb(169, 52, 52)",
+          backgroundColor: "rgba(169, 52, 52, 1)",
+        },
+      ],
+    });
+  
+    const createChartData = () => {
+      const chart = [];
+      chart.push(testedHistoryChart());
+      chart.push(recoveredHistoryChart());
+      chart.push(deathsHistoryChart());
+      chart.push(newCasesHistoryChart());
+      chart.push(activeHistoryChart());
+      chart.push(criticalHistoryChart());
+      return chart;
+    };
     if (data) {
       setHistoryData(data.response);
       setDataReady(true);
@@ -122,8 +122,8 @@ const CountryHistoryGraph = ({ country, date }) => {
           <Loading />
         </Box>
       ) : historyData.length < 5 ? (
-        <Box>
-          <Paper sx={{ p: 5 }} elevation={3}>No history found</Paper>
+        <Box m={1}>
+          <Paper sx={{ p: 4 }} elevation={3}>No history found</Paper>
         </Box>
       ) : !chartDataReady ? (
         <Box display="flex" justifyContent="center">
